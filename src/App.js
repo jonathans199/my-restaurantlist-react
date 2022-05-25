@@ -20,7 +20,7 @@ function App() {
 
       <Layout className='layout'>
         <Header>
-          <Menubar user={user}/>
+          <Menubar />
         </Header>
         <Content>
           <Routes>

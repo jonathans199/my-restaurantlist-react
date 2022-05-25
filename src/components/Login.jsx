@@ -14,7 +14,10 @@ messagingSenderId: "928212276433",
 appId: "1:928212276433:web:6ddf6e4ab36bc6422da1f0"
 };
 
-
+const connectAuth = () => {
+    const app = initializeApp(firebaseConfig); // connect to firebase
+    return getAuth(app); // connect to firebase/auth 
+}
 
 // Initialize Firebase
 
@@ -22,8 +25,7 @@ export default function Login() {
 const { setUser } = useContext(UserContext)
 
     const handleLogin = ({ email, password }) => {
-    const auth = getAuth(app); // connect to firebase/auth
-    const app = initializeApp(firebaseConfig); // connect to firebase
+    const auth = connectAuth(); // connect to firebase/auth
       // login with Firebase Auth
 
     signInWithEmailAndPassword(auth, email, password)
@@ -31,8 +33,7 @@ const { setUser } = useContext(UserContext)
         .catch(console.error)
     }
     const handleGoogleLogin = () => {
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    const auth = connectAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
         .then(res => setUser(res.user))
