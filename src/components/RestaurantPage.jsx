@@ -6,7 +6,7 @@ export default function RestaurantPage() {
   const { restaurantId } = useParams();
   const [restaurant, setRestaurant] = useState();
   useEffect(() => {
-    // fetch restaurant by id
+    // fetch restaurant by id / fetch tto API
     fetch(`https://my-first-firestore-cd.web.app/restaurants/${restaurantId}`)
       .then(response => response.json())
       .then(data => setRestaurant(data))
